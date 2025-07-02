@@ -1,29 +1,36 @@
 # Time-Series Signal Prediction using ML
 
-This project loads and processes `.mat` data containing 9 time-series features. It performs signal smoothing, feature visualization, and trains both a linear regression and a feedforward neural network (FNN) to predict target output values.
+This project demonstrates how machine learning can be used to analyze and predict time-series sensor data.
 
-## 📁 Features
-- `.mat` loader using h5py
-- 9-feature signal smoothing using moving average
-- Visualization with matplotlib subplots
-- Linear regression (scikit-learn)
-- Feedforward neural net (PyTorch)
-- Actual vs Predicted graph comparison
+📊 **Overview**  
+The goal of this project is to take a dataset of smoothed signal features and train both a **Feedforward Neural Network (FNN)** and **Linear Regression** model to predict a target output variable.
 
-## 🔧 Technologies
-- Python
-- NumPy, h5py, matplotlib
-- scikit-learn
-- PyTorch
+🛠 **Key Features**
+- Loads and processes `.mat` time-series data using `scipy.io.loadmat`
+- Visualizes patterns in high-dimensional sensor data
+- Trains and evaluates two models: a custom FNN and baseline linear regression
+- Compares prediction performance visually and numerically
 
-## 📈 Results
-![Prediction Plot](plots/predictions.png)
+📁 **Files in This Repo**
+| File | Description |
+|------|-------------|
+| `FNN.py` | Core feedforward neural network model |
+| `importingdata.py` | Script to load `.mat` data and print structure |
+| `notebook.ipynb` | Jupyter notebook for training, plotting, and analysis |
+| `Practice celll.py` | First practice script for exploring data |
+| `Second Practice Cell.py` | Second script for testing model logic |
+| `README.md` | This file — project explanation |
+| `.gitignore` | Prevents large `.mat` files from being uploaded |
 
-## 💡 Run It Yourself
-1. Clone this repo
-2. Install dependencies:  
-   `pip install -r requirements.txt`
-3. Run:  
-   `python main.py`
+📦 **How to Restore the `.mat` File**
+GitHub doesn’t allow uploads over 100MB, so the `.mat` dataset (`RNN_ML_Ready_Data.mat`) was removed. To recreate it:
 
-> Dataset not included due to size. DM me for access or swap in your own `.mat` time-series.
+```python
+from scipy.io import savemat
+import numpy as np
+
+data = {
+    'X': np.random.rand(100, 10),  # Feature data
+    'Y': np.random.rand(100, 1)    # Target values
+}
+savemat('RNN_ML_Ready_Data.mat', data)
